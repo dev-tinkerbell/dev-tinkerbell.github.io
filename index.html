@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Last Published: Wed Feb 08 2023 06:55:08 GMT+0000 (Coordinated Universal Time) -->
 <html
   data-wf-domain="www.stryds.com"
   data-wf-page="63ded89801f036d738c80f21"
@@ -43,7 +42,9 @@
     />
     <link href="./css/webflow.css" rel="stylesheet" type="text/css" />
     <link href="./css/normalize.css" rel="stylesheet" type="text/css" />
-    <link href="./css/index.css" rel="stylesheet" type="text/css" />
+    <link href="./css/origin.css" rel="stylesheet" type="text/css" />
+    <link href="./css/responsive.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="./css/mobile.css" rel="stylesheet" type="text/css" /> -->
 
     <link
       href="https://global-uploads.webflow.com/639e76b6a0716a69a2134f59/63bc75892d6a7a700b083b92_stryds_favicon.png"
@@ -56,8 +57,10 @@
     />
   </head>
   <body class="body">
-    <!--
-    <div data-w-id="4df392eb-3b56-d7b9-967b-ce866d865516">
+    <div
+      data-w-id="4df392eb-3b56-d7b9-967b-ce866d865516"
+      class="mobile-hero__section is--mobile wf-section"
+    >
       <div class="menu-bar__wrapper is--mobile">
         <h1
           data-w-id="4df392eb-3b56-d7b9-967b-ce866d86555d"
@@ -68,18 +71,10 @@
           ><span class="d-letter-mobile-heading-letter-spacing__span">d</span>s
         </h1>
       </div>
-
       <div class="hero-scroll__wrapper-container">
         <div
           data-w-id="109b782e-20ac-d37b-f6d3-4d1cff5374ef"
           class="mobile-hero-mockup__wrapper"
-          style="
-            transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
-              rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-            transform-style: preserve-3d;
-            opacity: 1;
-            will-change: opacity, transform;
-          "
         >
           <img
             src="https://global-uploads.webflow.com/639e76b6a0716a69a2134f59/63e2f48e19af3b83e0e69b68_first-hero-mockup-1.webp"
@@ -94,13 +89,7 @@
             "
             alt="A mockup of the Stryds app"
             class="mobile-hero__mockup is--1"
-            style="
-              transform: translate3d(50px, 0px, 0px) scale3d(1, 1, 1)
-                rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-              transform-style: preserve-3d;
-              opacity: 1;
-              will-change: transform;
-            "
+            data-position="50"
           /><img
             src="https://global-uploads.webflow.com/639e76b6a0716a69a2134f59/63e2f48e58fecf2af8eaed50_first-hero-mockup-2.webp"
             loading="lazy"
@@ -113,13 +102,7 @@
             "
             alt="A mockup of the Stryds app"
             class="mobile-hero__mockup is--2"
-            style="
-              transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1)
-                rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-              transform-style: preserve-3d;
-              opacity: 1;
-              will-change: transform;
-            "
+            data-position="0"
           /><img
             src="https://global-uploads.webflow.com/639e76b6a0716a69a2134f59/63e2f48dec68c01ff5eceecf_first-hero-mockup-3.webp"
             loading="lazy"
@@ -132,13 +115,7 @@
             "
             alt="A mockup of the Stryds app"
             class="mobile-hero__mockup is--3"
-            style="
-              transform: translate3d(-40px, 0px, 0px) scale3d(1, 1, 1)
-                rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-              transform-style: preserve-3d;
-              opacity: 1;
-              will-change: transform;
-            "
+            data-position="-40"
           /><img
             src="https://global-uploads.webflow.com/639e76b6a0716a69a2134f59/63e2f48e88285e4687b5546f_first-hero-mockup-4.webp"
             loading="lazy"
@@ -152,13 +129,7 @@
             "
             alt="A mockup of the Stryds app"
             class="mobile-hero__mockup is--4"
-            style="
-              transform: translate3d(-60px, 0px, 0px) scale3d(1, 1, 1)
-                rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-              transform-style: preserve-3d;
-              opacity: 1;
-              will-change: transform;
-            "
+            data-position="-60"
           /><img
             src="https://global-uploads.webflow.com/639e76b6a0716a69a2134f59/63e2f48e2f614d10be8669f5_first-hero-mockup-5.webp"
             loading="lazy"
@@ -171,25 +142,10 @@
             "
             alt="A mockup of the Stryds app"
             class="mobile-hero__mockup is--5"
-            style="
-              transform: translate3d(-80px, 0px, 0px) scale3d(1, 1, 1)
-                rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-              transform-style: preserve-3d;
-              opacity: 1;
-              will-change: transform;
-            "
+            data-position="-80"
           />
         </div>
-        <div
-          class="hero-scroll__wrapper"
-          style="
-            will-change: opacity, transform;
-            opacity: 0;
-            transform: translate3d(0px, 0px, 0px) scale3d(0.5, 0.5, 1)
-              rotateX(0deg) rotateY(0deg) rotateZ(45deg) skew(0deg, 0deg);
-            transform-style: preserve-3d;
-          "
-        >
+        <div class="hero-scroll__wrapper">
           <div class="hero-frame is--1">
             <img
               src="https://global-uploads.webflow.com/639e76b6a0716a69a2134f59/63c9b81dba9943bda6ab969f_hero__image-2.webp"
@@ -266,31 +222,19 @@
               class="image-32"
             />
           </div>
+
+          <div class="dim"></div>
         </div>
+
         <div id="paragraphs" class="hero-text__wrapper">
-          <div
-            class="hero-paragraphs__wrapper"
-            style="will-change: opacity; opacity: 0"
-          >
-            <p
-              class="hero-scroll__paragraph is--1"
-              style="
-                will-change: transform, opacity;
-                transform: translate3d(0px, 0px, 0px) scale3d(0.8, 0.8, 1)
-                  rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-                transform-style: preserve-3d;
-                opacity: 0;
-              "
-            >
+          <div class="hero-paragraphs__wrapper">
+            <p class="hero-scroll__paragraph is--1">
               A <span class="text-highlight__span">Social App</span> And
               <span class="text-highlight__span">Health App</span> In One<span
                 class="text-highlight__span"
               ></span>
             </p>
-            <p
-              class="hero-scroll__paragraph is--2"
-              style="will-change: opacity; opacity: 0"
-            >
+            <p class="hero-scroll__paragraph is--2">
               Because healthy habits stick —
               <span class="text-highlight__span">Together</span>
             </p>
@@ -298,11 +242,10 @@
         </div>
       </div>
     </div>
-    -->
 
     <div
       data-w-id="6acb0285-3353-e415-71fc-5906a4365011"
-      class="new-hero__section wf-section"
+      class="new-hero__section wf-section is--pc"
     >
       <div class="hero-scroll__wrapper-container">
         <!-- 카드 회전 영역 -->
@@ -496,7 +439,7 @@
       </div>
     </div>
 
-    <!-- svg graph 영역  -->
+    <!-- lottie 영역  -->
     <section
       data-w-id="d3c651ee-474f-ae3c-8eda-65e8aef09de0"
       class="healthy-competition__section wf-section"
@@ -508,18 +451,9 @@
             class="smilie-on-mobile__wrapper"
           >
             <div
-              id="w-node-ea597442-5163-3252-0a69-98af09aaa6b0-38c80f21"
-              data-w-id="ea597442-5163-3252-0a69-98af09aaa6b0"
-              data-is-ix2-target="1"
+              id="lottie-animation-mobile"
               class="lottie-animation-2"
-              data-animation-type="lottie"
-              data-src="https://global-uploads.webflow.com/639e76b6a0716a69a2134f59/63bd80d5bfbced1b1d641e5a_healthy-competition__animation.json"
-              data-loop="0"
-              data-direction="1"
-              data-autoplay="0"
-              data-renderer="svg"
-              data-default-duration="1.5"
-              data-duration="1.5"
+              style="width: 250px; height: 255px"
             ></div>
           </div>
           <div
@@ -549,31 +483,8 @@
         </div>
       </div>
 
-      <!-- <div
-        data-w-id="5774bdf9-81ee-0258-6fea-b3b0014ad5f0"
-        data-is-ix2-target="1"
-        class="lottie-animation"
-        data-animation-type="lottie"
-        data-src="https://global-uploads.webflow.com/639e76b6a0716a69a2134f59/63bd80d5bfbced1b1d641e5a_healthy-competition__animation.json"
-        data-loop="0"
-        data-direction="1"
-        data-autoplay="0"
-        data-renderer="svg"
-        data-default-duration="1.5"
-        data-duration="1.5"
-      ></div> -->
-
-      <!-- <lottie-player
-        src="https://global-uploads.webflow.com/639e76b6a0716a69a2134f59/63bd80d5bfbced1b1d641e5a_healthy-competition__animation.json"
-        background="transparent"
-        speed="1.5"
-        autoplay
-        class="lottie-animation"
-        id="firstLottie"
-      ></lottie-player> -->
-
       <div
-        id="animationWindow"
+        id="lottie-animation-pc"
         class="lottie-animation"
         style="width: 650px; height: auto"
       ></div>
