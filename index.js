@@ -269,9 +269,9 @@ class InteractionOnMobile extends Interaction {
         scrollTrigger: {
           trigger: ".is--mobile .hero-scroll__wrapper-container",
           start: "top top",
-          end: "30% center",
+          end: "70% center",
           toggleActions: this.toggleActions,
-          scrub: true,
+          scrub: 1,
           // markers: true,
         },
       })
@@ -290,9 +290,9 @@ class InteractionOnMobile extends Interaction {
         scrollTrigger: {
           trigger: ".is--mobile .hero-scroll__wrapper-container",
           start: "top top",
-          end: "60% center",
+          end: "70% center",
           toggleActions: this.toggleActions,
-          scrub: true,
+          scrub: 1,
           // markers: true,
         },
       })
@@ -316,7 +316,7 @@ class InteractionOnMobile extends Interaction {
         start: "top top",
         end: "20% center",
         toggleActions: this.toggleActions,
-        scrub: true,
+        scrub: 0.5,
         // markers: true,
       },
       autoAlpha: 0,
@@ -331,7 +331,7 @@ class InteractionOnMobile extends Interaction {
           start: "32% center",
           end: "bottom bottom",
           toggleActions: this.toggleActions,
-          scrub: true,
+          scrub: 1,
           // markers: true,
         },
       })
