@@ -26,8 +26,6 @@ class Viewport {
       return new InteractionOnPc().render();
     }
     new InteractionOnMobile().render();
-
-    // window.location.reload();
   }
 }
 
