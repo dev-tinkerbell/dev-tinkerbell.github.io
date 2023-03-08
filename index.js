@@ -252,10 +252,16 @@ class InteractionOnMobile extends Interaction {
       }
     );
 
-    gsap.to(".mobile-hero-mockup__wrapper img[data-position]", {
-      x: (i, el) => `${el.getAttribute("data-position")}px`,
-      duration: 1.5,
-    });
+    gsap.fromTo(
+      ".mobile-hero-mockup__wrapper img[data-position]",
+      {
+        x: 0,
+      },
+      {
+        x: (i, el) => `${el.getAttribute("data-position")}px`,
+        duration: 1.5,
+      }
+    );
 
     gsap.to(".hero-background__heading.is--mobile", {
       y: "-30px",
