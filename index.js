@@ -29,15 +29,10 @@ class Viewport {
   }
 }
 
-class Interaction {
-  constructor(toggleActions = "play pause resume reset") {
-    this.toggleActions = toggleActions;
-  }
-}
+const toggleActions = "play pause resume reset";
 
-class InteractionLottie extends Interaction {
-  constructor(toggleActions) {
-    super(toggleActions);
+class InteractionLottie {
+  constructor() {
     this.lottieListElements = {
       PC: "#lottie-animation-pc",
       MOBILE: "#lottie-animation-mobile",
@@ -96,7 +91,7 @@ class InteractionLottie extends Interaction {
   }
 }
 
-class InteractionOnPc extends Interaction {
+class InteractionOnPc {
   render() {
     this.setInitAnimation();
     this.setHeadeingParagraphAnimation();
@@ -124,7 +119,7 @@ class InteractionOnPc extends Interaction {
           trigger: ".is--pc .hero-scroll__wrapper-container",
           start: "top top",
           end: "bottom -40%",
-          toggleActions: this.toggleActions,
+          toggleActions,
           scrub: 1.5,
           // markers: true,
         },
@@ -170,7 +165,7 @@ class InteractionOnPc extends Interaction {
           trigger: ".is--pc .hero-scroll__wrapper-container",
           start: "50% top",
           end: "200% center",
-          toggleActions: this.toggleActions,
+          toggleActions,
           scrub: 1.5,
           // markers: true,
         },
@@ -194,7 +189,7 @@ class InteractionOnPc extends Interaction {
         trigger: ".is--pc .hero-scroll__wrapper-container",
         start: "50% top",
         end: "bottom center",
-        toggleActions: this.toggleActions,
+        toggleActions,
         scrub: 1.5,
         // markers: true,
       },
@@ -208,7 +203,7 @@ class InteractionOnPc extends Interaction {
         trigger: ".mockup-cards-opening__section",
         start: "top bottom",
         end: "bottom center",
-        toggleActions: this.toggleActions,
+        toggleActions,
         scrub: 1.5,
         // markers: true,
       },
@@ -229,7 +224,7 @@ class InteractionOnPc extends Interaction {
   }
 }
 
-class InteractionOnMobile extends Interaction {
+class InteractionOnMobile {
   render() {
     this.setInitAnimation();
     this.setMockupCardsAnimation();
@@ -276,7 +271,7 @@ class InteractionOnMobile extends Interaction {
           trigger: ".is--mobile .hero-scroll__wrapper-container",
           start: "top top",
           end: "70% center",
-          toggleActions: this.toggleActions,
+          toggleActions,
           scrub: 1,
           // markers: true,
         },
@@ -297,9 +292,10 @@ class InteractionOnMobile extends Interaction {
           trigger: ".is--mobile .hero-scroll__wrapper-container",
           start: "top top",
           end: "70% center",
-          toggleActions: this.toggleActions,
+          toggleActions,
           scrub: 1,
-          markers: true,
+          immediateRender: false,
+          // markers: true,
           onEnter: () => {
             console.log("enter");
           },
@@ -330,7 +326,7 @@ class InteractionOnMobile extends Interaction {
         trigger: ".mobile-hero__section",
         start: "top top",
         end: "20% center",
-        toggleActions: this.toggleActions,
+        toggleActions,
         scrub: 0.5,
         // markers: true,
       },
@@ -345,7 +341,7 @@ class InteractionOnMobile extends Interaction {
           trigger: ".mobile-hero__section",
           start: "32% center",
           end: "bottom bottom",
-          toggleActions: this.toggleActions,
+          toggleActions,
           scrub: 1,
           // markers: true,
         },
@@ -369,7 +365,7 @@ class InteractionOnMobile extends Interaction {
         trigger: ".mobile-hero__section",
         start: "32% center",
         end: "35% center",
-        toggleActions: this.toggleActions,
+        toggleActions,
         scrub: 1,
         // markers: true,
       },
@@ -384,7 +380,7 @@ class InteractionOnMobile extends Interaction {
           trigger: ".mobile-hero__section",
           start: "38% center",
           end: "bottom bottom",
-          toggleActions: this.toggleActions,
+          toggleActions,
           scrub: 1,
           // markers: true,
         },
@@ -421,7 +417,7 @@ const viewport = new Viewport();
 viewport.setDevice();
 
 const interactionLottie = new InteractionLottie();
-// interactionLottie.playLottie(interactionLottie.lottieListElements.MOBILE);
+interactionLottie.playLottie(interactionLottie.lottieListElements.MOBILE);
 interactionLottie.playLottie(interactionLottie.lottieListElements.PC);
 
 window.addEventListener("resize", () => {
