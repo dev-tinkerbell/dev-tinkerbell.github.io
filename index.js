@@ -271,7 +271,7 @@ class InteractionOnMobile extends Interaction {
           start: "top top",
           end: "30% center",
           toggleActions: this.toggleActions,
-          scrub: 2,
+          scrub: 1,
           // markers: true,
         },
       })
@@ -292,7 +292,7 @@ class InteractionOnMobile extends Interaction {
           start: "top top",
           end: "60% center",
           toggleActions: this.toggleActions,
-          scrub: 2,
+          scrub: 1,
           // markers: true,
         },
       })
@@ -316,7 +316,7 @@ class InteractionOnMobile extends Interaction {
         start: "top top",
         end: "20% center",
         toggleActions: this.toggleActions,
-        scrub: 1.5,
+        scrub: 0.5,
         // markers: true,
       },
       autoAlpha: 0,
@@ -331,7 +331,7 @@ class InteractionOnMobile extends Interaction {
           start: "32% center",
           end: "bottom bottom",
           toggleActions: this.toggleActions,
-          scrub: 2,
+          scrub: 1,
           // markers: true,
         },
       })
@@ -355,7 +355,7 @@ class InteractionOnMobile extends Interaction {
         start: "32% center",
         end: "35% center",
         toggleActions: this.toggleActions,
-        scrub: 2,
+        scrub: 1,
         // markers: true,
       },
       autoAlpha: 0,
@@ -370,7 +370,7 @@ class InteractionOnMobile extends Interaction {
           start: "38% center",
           end: "bottom bottom",
           toggleActions: this.toggleActions,
-          scrub: 2,
+          scrub: 1,
           // markers: true,
         },
       })
