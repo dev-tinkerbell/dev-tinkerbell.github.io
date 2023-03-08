@@ -56,7 +56,7 @@ class InteractionLottie extends Interaction {
       let customScrollTrigger = {
         trigger: target,
         start: "top center",
-        end: "center center",
+        end: "70% bottom",
         scrub: 2,
         // markers: true,
       };
@@ -299,7 +299,16 @@ class InteractionOnMobile extends Interaction {
           end: "70% center",
           toggleActions: this.toggleActions,
           scrub: 1,
-          // markers: true,
+          markers: true,
+          onEnter: () => {
+            console.log("enter");
+          },
+          onEnterBack: () => {
+            console.log("enter back");
+          },
+          onLeave: () => {
+            console.log("leave");
+          },
         },
       })
       .fromTo(
@@ -412,7 +421,7 @@ const viewport = new Viewport();
 viewport.setDevice();
 
 const interactionLottie = new InteractionLottie();
-interactionLottie.playLottie(interactionLottie.lottieListElements.MOBILE);
+// interactionLottie.playLottie(interactionLottie.lottieListElements.MOBILE);
 interactionLottie.playLottie(interactionLottie.lottieListElements.PC);
 
 window.addEventListener("resize", () => {
