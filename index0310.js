@@ -25,7 +25,7 @@ class Viewport {
     if (this.currentDevice === this.pc) {
       return new InteractionOnPc().render();
     }
-    //new InteractionOnMobile().render();
+    new InteractionOnMobile().render();
   }
 }
 
@@ -223,9 +223,10 @@ class InteractionOnPc {
     });
   }
 }
-let aMotion = true;
+
 class InteractionOnMobile {
   render() {
+    this.setInitAnimation();
     this.setMockupCardsAnimation();
     this.setHeadingAnimation();
     this.setHeroScrollCardsAnimation();
@@ -233,9 +234,7 @@ class InteractionOnMobile {
   }
 
   setInitAnimation() {
-    const _this = this;
-
-    gsap.fromTo(
+    const mockupAnimation01 = gsap.fromTo(
       ".mobile-hero-mockup__wrapper",
       {
         autoAlpha: 0,
@@ -245,13 +244,10 @@ class InteractionOnMobile {
         autoAlpha: 1,
         scale: 1,
         duration: 1.5,
-        onComplete: () => {
-          //_this.setMockupCardsAnimation();
-        },
       }
     );
 
-    gsap.fromTo(
+    const mockupAnimation02 = gsap.fromTo(
       ".mobile-hero-mockup__wrapper img[data-position]",
       {
         x: 0,
@@ -262,10 +258,16 @@ class InteractionOnMobile {
       }
     );
 
-    gsap.to(".hero-background__heading.is--mobile", {
+    const headingAnimation = gsap.to(".hero-background__heading.is--mobile", {
       y: "-30px",
       duration: 1,
     });
+
+    if (window.scrollY > 10) {
+      mockupAnimation01.paused(true);
+      mockupAnimation02.paused(true);
+      headingAnimation.paused(true);
+    }
   }
 
   setMockupCardsAnimation() {
@@ -295,13 +297,8 @@ class InteractionOnMobile {
       }
     }
 
-    gsap.fromTo(
-      ".mobile-hero-mockup__wrapper img[data-position]",
-      {
-        x: (i, el) => `${el.getAttribute("data-position")}px`,
-      },
-      {
-        x: "0px",
+    gsap
+      .timeline({
         scrollTrigger: {
           trigger: ".is--mobile .hero-scroll__wrapper-container",
           start: `${getPosition(start)}px top`,
@@ -310,8 +307,16 @@ class InteractionOnMobile {
           scrub: 1,
           // markers: true,
         },
-      }
-    );
+      })
+      .fromTo(
+        ".mobile-hero-mockup__wrapper img[data-position]",
+        {
+          x: (i, el) => `${el.getAttribute("data-position")}px`,
+        },
+        {
+          x: "0px",
+        }
+      );
 
     gsap.fromTo(
       ".mobile-hero-mockup__wrapper",
@@ -328,9 +333,6 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
-          onEnter: () => {
-            aMotion = false;
-          },
           // markers: true,
         },
       }
@@ -440,7 +442,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const viewport = new Viewport();
 
-document.addEventListener("load", () => {
+window.addEventListener("load", () => {
   viewport.setDevice();
 
   const interactionLottie = new InteractionLottie();
@@ -448,21 +450,6 @@ document.addEventListener("load", () => {
   interactionLottie.playLottie(interactionLottie.lottieListElements.PC);
 });
 
-document.addEventListener("DOMContentLoaded", function () {});
-
-window.onload = function () {
-  const a = new InteractionOnMobile();
-
-  if (window.scrollY < 200) {
-    if (aMotion) a.setInitAnimation();
-  }
-  setTimeout(() => {
-    a.render();
-  }, 0);
-};
-
 window.addEventListener("resize", () => {
   viewport.setDevice();
 });
-
-window.addEventListener("scroll", () => {});
