@@ -307,7 +307,7 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
-          // markers: true,
+          markers: true,
         },
       })
       .fromTo(
