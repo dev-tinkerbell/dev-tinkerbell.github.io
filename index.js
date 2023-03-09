@@ -226,7 +226,7 @@ class InteractionOnPc {
 
 class InteractionOnMobile {
   render() {
-    if (window.pageYOffset > 100) {
+    if (window.pageYOffset < 100) {
       this.setInitAnimation();
     }
     this.setMockupCardsAnimation();
@@ -236,7 +236,7 @@ class InteractionOnMobile {
   }
 
   setInitAnimation() {
-    const mockupAnimation01 = gsap.fromTo(
+    gsap.fromTo(
       ".mobile-hero-mockup__wrapper",
       {
         autoAlpha: 0,
@@ -249,7 +249,7 @@ class InteractionOnMobile {
       }
     );
 
-    const mockupAnimation02 = gsap.fromTo(
+    gsap.fromTo(
       ".mobile-hero-mockup__wrapper img[data-position]",
       {
         x: 0,
@@ -260,7 +260,7 @@ class InteractionOnMobile {
       }
     );
 
-    const headingAnimation = gsap.to(".hero-background__heading.is--mobile", {
+    gsap.to(".hero-background__heading.is--mobile", {
       y: "-30px",
       duration: 1,
     });
