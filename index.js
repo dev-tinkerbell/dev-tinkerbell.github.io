@@ -226,14 +226,15 @@ class InteractionOnPc {
 
 class InteractionOnMobile {
   render() {
-    if (window.pageYOffset < 100) {
-      alert(window.pageYOffset);
-      this.setInitAnimation();
-    }
     this.setMockupCardsAnimation();
     this.setHeadingAnimation();
     this.setHeroScrollCardsAnimation();
     this.setParagraphAnimation();
+
+    if (window.pageYOffset < 100) {
+      alert(window.pageYOffset);
+      this.setInitAnimation();
+    }
   }
 
   setInitAnimation() {
@@ -302,7 +303,7 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
-          // markers: true,
+          markers: true,
         },
       })
       .fromTo(
