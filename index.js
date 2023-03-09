@@ -232,7 +232,7 @@ class InteractionOnMobile {
     this.setParagraphAnimation();
 
     if (window.scrollY < 200) {
-      alert(window.scrollY);
+      alert("y : ", window.scrollY);
       this.setInitAnimation();
     } else {
       alert("200 over");
