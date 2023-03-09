@@ -446,7 +446,9 @@ window.addEventListener("load", () => {
   interactionLottie.playLottie(interactionLottie.lottieListElements.PC);
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {});
+
+window.onload = function () {
   const a = new InteractionOnMobile();
   a.render();
   alert(`1 : ${window.scrollY}`);
@@ -457,7 +459,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (window.scrollY < 200) {
     a.setInitAnimation();
   }
-});
+};
 
 window.addEventListener("resize", () => {
   viewport.setDevice();
