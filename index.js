@@ -438,7 +438,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const viewport = new Viewport();
 
-window.addEventListener("load", () => {
+document.addEventListener("load", () => {
   viewport.setDevice();
 
   const interactionLottie = new InteractionLottie();
@@ -450,7 +450,7 @@ document.addEventListener("DOMContentLoaded", function () {});
 
 window.onload = function () {
   const a = new InteractionOnMobile();
-  a.render();
+
   alert(`1 : ${window.scrollY}`);
   setTimeout(() => {
     alert(`2 : ${window.scrollY}`);
@@ -459,6 +459,9 @@ window.onload = function () {
   if (window.scrollY < 200) {
     a.setInitAnimation();
   }
+  setTimeout(() => {
+    a.render();
+  }, 0);
 };
 
 window.addEventListener("resize", () => {
