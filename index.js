@@ -223,14 +223,10 @@ class InteractionOnPc {
     });
   }
 }
-
+let aMotion = true;
 class InteractionOnMobile {
-  constructor() {
-    this.setInitAnimation();
-  }
-
   render() {
-    //this.setMockupCardsAnimation();
+    this.setMockupCardsAnimation();
     this.setHeadingAnimation();
     this.setHeroScrollCardsAnimation();
     this.setParagraphAnimation();
@@ -332,6 +328,9 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
+          onEnter: () => {
+            aMotion = false;
+          },
           // markers: true,
         },
       }
@@ -455,7 +454,7 @@ window.onload = function () {
   const a = new InteractionOnMobile();
 
   if (window.scrollY < 200) {
-    //a.setInitAnimation();
+    if (aMotion) a.setInitAnimation();
   }
   setTimeout(() => {
     a.render();
