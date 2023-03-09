@@ -273,7 +273,7 @@ class InteractionOnMobile {
         mockupAnimation02.paused(false);
         headingAnimation.paused(false);
       }
-    }, 1000);
+    }, 500);
   }
 
   setMockupCardsAnimation() {
@@ -339,7 +339,7 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
-          markers: true,
+          // markers: true,
         },
       }
     );
