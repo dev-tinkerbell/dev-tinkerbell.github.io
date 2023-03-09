@@ -443,14 +443,15 @@ window.addEventListener("load", () => {
   interactionLottie.playLottie(interactionLottie.lottieListElements.PC);
   const a = new InteractionOnMobile();
   a.render();
-
-  if (window.scrollY < 200) {
-    alert("test");
-    alert(window.scrollY);
-    a.setInitAnimation();
-  } else {
-    alert("200 over");
-  }
+  setTimeout(() => {
+    if (window.scrollY < 200) {
+      alert("test");
+      alert(window.scrollY);
+      a.setInitAnimation();
+    } else {
+      alert("200 over");
+    }
+  }, 3000);
 });
 
 window.addEventListener("resize", () => {
