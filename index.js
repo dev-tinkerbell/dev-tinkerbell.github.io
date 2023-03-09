@@ -234,7 +234,7 @@ class InteractionOnMobile {
   }
 
   setInitAnimation() {
-    gsap.fromTo(
+    const mockupAnimation01 = gsap.fromTo(
       ".mobile-hero-mockup__wrapper",
       {
         autoAlpha: 0,
@@ -247,7 +247,7 @@ class InteractionOnMobile {
       }
     );
 
-    gsap.fromTo(
+    const mockupAnimation02 = gsap.fromTo(
       ".mobile-hero-mockup__wrapper img[data-position]",
       {
         x: 0,
@@ -258,19 +258,51 @@ class InteractionOnMobile {
       }
     );
 
-    gsap.to(".hero-background__heading.is--mobile", {
+    const headingAnimation = gsap.to(".hero-background__heading.is--mobile", {
       y: "-30px",
       duration: 1,
     });
+
+    if (window.scrollY !== 0) {
+      mockupAnimation01.paused(true);
+      mockupAnimation02.paused(true);
+      headingAnimation.paused(true);
+    }
   }
 
   setMockupCardsAnimation() {
+    const start = "start";
+    const end = "end";
+
+    function getPosition(standard) {
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const endPoint = window.innerHeight * 0.7;
+      const cardScrollSection = window.scrollY < window.innerHeight * 2;
+
+      if (standard === start && cardScrollSection) {
+        return scrollTop * -1;
+      }
+
+      if (standard === end && cardScrollSection) {
+        return scrollTop * -1 + endPoint;
+      }
+
+      if (standard === start && !cardScrollSection) {
+        return windowHeight * -2;
+      }
+
+      if (standard === end && !cardScrollSection) {
+        return windowHeight * -2 + endPoint;
+      }
+    }
+
     gsap
       .timeline({
         scrollTrigger: {
           trigger: ".is--mobile .hero-scroll__wrapper-container",
-          start: "top top",
-          end: "70% center",
+          start: `${getPosition(start)}px top`,
+          end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
           // markers: true,
@@ -286,52 +318,47 @@ class InteractionOnMobile {
         }
       );
 
-    gsap
-      .timeline({
+    gsap.fromTo(
+      ".mobile-hero-mockup__wrapper",
+      {
+        autoAlpha: 1,
+        scale: 1,
+      },
+      {
+        autoAlpha: 0,
+        scale: 0.5,
         scrollTrigger: {
           trigger: ".is--mobile .hero-scroll__wrapper-container",
-          start: "top top",
-          end: "70% center",
+          start: `${getPosition(start)}px top`,
+          end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
-          immediateRender: false,
           // markers: true,
-          onEnter: () => {
-            console.log("enter");
-          },
-          onEnterBack: () => {
-            console.log("enter back");
-          },
-          onLeave: () => {
-            console.log("leave");
-          },
         },
-      })
-      .fromTo(
-        ".mobile-hero-mockup__wrapper",
-        {
-          autoAlpha: 1,
-          scale: 1,
-        },
-        {
-          autoAlpha: 0,
-          scale: 0.5,
-        }
-      );
+      }
+    );
   }
 
   setHeadingAnimation() {
-    gsap.to(".hero-background__heading.is--mobile", {
-      scrollTrigger: {
-        trigger: ".mobile-hero__section",
-        start: "top top",
-        end: "20% center",
-        toggleActions,
-        scrub: 0.5,
-        // markers: true,
+    gsap.fromTo(
+      ".hero-background__heading.is--mobile",
+      {
+        autoAlpha: 1,
+        scale: 1,
       },
-      autoAlpha: 0,
-    });
+      {
+        scrollTrigger: {
+          trigger: ".mobile-hero__section",
+          start: "top top",
+          end: "20% center",
+          toggleActions,
+          scrub: 0.8,
+          markers: true,
+        },
+        autoAlpha: 0,
+        scale: 0.5,
+      }
+    );
   }
 
   setHeroScrollCardsAnimation() {
@@ -414,11 +441,14 @@ class InteractionOnMobile {
 gsap.registerPlugin(ScrollTrigger);
 
 const viewport = new Viewport();
-viewport.setDevice();
 
-const interactionLottie = new InteractionLottie();
-interactionLottie.playLottie(interactionLottie.lottieListElements.MOBILE);
-interactionLottie.playLottie(interactionLottie.lottieListElements.PC);
+window.addEventListener("load", () => {
+  viewport.setDevice();
+
+  const interactionLottie = new InteractionLottie();
+  interactionLottie.playLottie(interactionLottie.lottieListElements.MOBILE);
+  interactionLottie.playLottie(interactionLottie.lottieListElements.PC);
+});
 
 window.addEventListener("resize", () => {
   viewport.setDevice();
