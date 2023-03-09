@@ -251,21 +251,25 @@ class InteractionOnMobile {
       )
       .paused(true);
 
-    const mockupAnimation02 = gsap.fromTo(
-      ".mobile-hero-mockup__wrapper img[data-position]",
-      {
-        x: 0,
-      },
-      {
-        x: (i, el) => `${el.getAttribute("data-position")}px`,
-        duration: 1.5,
-      }
-    );
+    const mockupAnimation02 = gsap
+      .fromTo(
+        ".mobile-hero-mockup__wrapper img[data-position]",
+        {
+          x: 0,
+        },
+        {
+          x: (i, el) => `${el.getAttribute("data-position")}px`,
+          duration: 1.5,
+        }
+      )
+      .paused(true);
 
-    const headingAnimation = gsap.to(".hero-background__heading.is--mobile", {
-      y: "-30px",
-      duration: 1,
-    });
+    const headingAnimation = gsap
+      .to(".hero-background__heading.is--mobile", {
+        y: "-30px",
+        duration: 1,
+      })
+      .paused(true);
 
     setTimeout(() => {
       if (window.scrollY < 10) {
@@ -273,7 +277,7 @@ class InteractionOnMobile {
         mockupAnimation02.paused(false);
         headingAnimation.paused(false);
       }
-    }, 500);
+    }, 100);
   }
 
   setMockupCardsAnimation() {
@@ -311,7 +315,7 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
-          // markers: true,
+          markers: true,
         },
       })
       .fromTo(
