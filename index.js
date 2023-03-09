@@ -263,7 +263,7 @@ class InteractionOnMobile {
       duration: 1,
     });
 
-    if (window.scrollY !== 0) {
+    if (window.scrollY > 10) {
       mockupAnimation01.paused(true);
       mockupAnimation02.paused(true);
       headingAnimation.paused(true);
@@ -353,7 +353,7 @@ class InteractionOnMobile {
           end: "20% center",
           toggleActions,
           scrub: 0.8,
-          markers: true,
+          // markers: true,
         },
         autoAlpha: 0,
         scale: 0.5,
