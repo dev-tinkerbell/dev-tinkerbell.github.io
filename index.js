@@ -329,6 +329,12 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
+          onEnter: () => {
+            alert("onenter");
+          },
+          onLeave: () => {
+            alert("onleave");
+          },
           // markers: true,
         },
       }
@@ -450,11 +456,6 @@ document.addEventListener("DOMContentLoaded", function () {});
 
 window.onload = function () {
   const a = new InteractionOnMobile();
-
-  alert(`1 : ${window.scrollY}`);
-  setTimeout(() => {
-    alert(`2 : ${window.scrollY}`);
-  }, 3000);
 
   if (window.scrollY < 200) {
     a.setInitAnimation();
