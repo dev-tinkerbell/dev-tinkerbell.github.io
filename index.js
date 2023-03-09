@@ -231,9 +231,11 @@ class InteractionOnMobile {
     this.setHeroScrollCardsAnimation();
     this.setParagraphAnimation();
 
-    if (window.pageYOffset < 200) {
-      alert(window.pageYOffset);
+    if (window.scrollY < 200) {
+      alert(window.scrollY);
       this.setInitAnimation();
+    } else {
+      alert("200 over");
     }
   }
 
