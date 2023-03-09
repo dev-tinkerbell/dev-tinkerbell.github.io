@@ -275,7 +275,7 @@ class InteractionOnMobile {
         mockupAnimation02.paused(false);
         headingAnimation.paused(false);
       }
-    }, 0);
+    }, 50);
   }
 
   setMockupCardsAnimation() {
