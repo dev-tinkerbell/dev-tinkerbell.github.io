@@ -236,21 +236,20 @@ class InteractionOnMobile {
   }
 
   setInitAnimation() {
-    const mockupAnimation01 = gsap.fromTo(
-      ".mobile-hero-mockup__wrapper",
-      {
-        autoAlpha: 0,
-        scale: 0.5,
-      },
-      {
-        autoAlpha: 1,
-        scale: 1,
-        duration: 1.5,
-        onStart: () => {
-          alert(window.scrollY);
+    const mockupAnimation01 = gsap
+      .fromTo(
+        ".mobile-hero-mockup__wrapper",
+        {
+          autoAlpha: 0,
+          scale: 0.5,
         },
-      }
-    );
+        {
+          autoAlpha: 1,
+          scale: 1,
+          duration: 1.5,
+        }
+      )
+      .paused(true);
 
     const mockupAnimation02 = gsap.fromTo(
       ".mobile-hero-mockup__wrapper img[data-position]",
@@ -269,12 +268,12 @@ class InteractionOnMobile {
     });
 
     setTimeout(() => {
-      if (window.scrollY > 10) {
-        mockupAnimation01.paused(true);
-        mockupAnimation02.paused(true);
-        headingAnimation.paused(true);
+      if (window.scrollY < 10) {
+        mockupAnimation01.paused(false);
+        mockupAnimation02.paused(false);
+        headingAnimation.paused(false);
       }
-    }, 500);
+    }, 1000);
   }
 
   setMockupCardsAnimation() {
