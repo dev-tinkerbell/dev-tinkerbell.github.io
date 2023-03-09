@@ -25,7 +25,7 @@ class Viewport {
     if (this.currentDevice === this.pc) {
       return new InteractionOnPc().render();
     }
-    new InteractionOnMobile().render();
+    //new InteractionOnMobile().render();
   }
 }
 
@@ -230,13 +230,6 @@ class InteractionOnMobile {
     this.setHeadingAnimation();
     this.setHeroScrollCardsAnimation();
     this.setParagraphAnimation();
-
-    if (window.scrollY < 200) {
-      alert("y : ", window.scrollY);
-      this.setInitAnimation();
-    } else {
-      alert("200 over");
-    }
   }
 
   setInitAnimation() {
@@ -448,6 +441,16 @@ window.addEventListener("load", () => {
   const interactionLottie = new InteractionLottie();
   interactionLottie.playLottie(interactionLottie.lottieListElements.MOBILE);
   interactionLottie.playLottie(interactionLottie.lottieListElements.PC);
+  const a = new InteractionOnMobile();
+  a.render();
+
+  if (window.scrollY < 200) {
+    alert("test");
+    alert(window.scrollY);
+    a.setInitAnimation();
+  } else {
+    alert("200 over");
+  }
 });
 
 window.addEventListener("resize", () => {
