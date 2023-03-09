@@ -234,40 +234,48 @@ class InteractionOnMobile {
   }
 
   setInitAnimation() {
-    const mockupAnimation01 = gsap.fromTo(
-      ".mobile-hero-mockup__wrapper",
-      {
-        autoAlpha: 0,
-        scale: 0.5,
-      },
-      {
-        autoAlpha: 1,
-        scale: 1,
-        duration: 1.5,
+    const mockupAnimation01 = gsap
+      .fromTo(
+        ".mobile-hero-mockup__wrapper",
+        {
+          autoAlpha: 0,
+          scale: 0.5,
+        },
+        {
+          autoAlpha: 1,
+          scale: 1,
+          duration: 1.5,
+        }
+      )
+      .paused(true);
+
+    const mockupAnimation02 = gsap
+      .fromTo(
+        ".mobile-hero-mockup__wrapper img[data-position]",
+        {
+          x: 0,
+        },
+        {
+          x: (i, el) => `${el.getAttribute("data-position")}px`,
+          duration: 1.5,
+        }
+      )
+      .paused(true);
+
+    const headingAnimation = gsap
+      .to(".hero-background__heading.is--mobile", {
+        y: "-30px",
+        duration: 1,
+      })
+      .paused(true);
+
+    setTimeout(() => {
+      if (window.scrollY < 10) {
+        mockupAnimation01.paused(false);
+        mockupAnimation02.paused(false);
+        headingAnimation.paused(false);
       }
-    );
-
-    const mockupAnimation02 = gsap.fromTo(
-      ".mobile-hero-mockup__wrapper img[data-position]",
-      {
-        x: 0,
-      },
-      {
-        x: (i, el) => `${el.getAttribute("data-position")}px`,
-        duration: 1.5,
-      }
-    );
-
-    const headingAnimation = gsap.to(".hero-background__heading.is--mobile", {
-      y: "-30px",
-      duration: 1,
-    });
-
-    if (window.scrollY > 10) {
-      mockupAnimation01.paused(true);
-      mockupAnimation02.paused(true);
-      headingAnimation.paused(true);
-    }
+    }, 100);
   }
 
   setMockupCardsAnimation() {
@@ -305,7 +313,7 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
-          // markers: true,
+          //   markers: true,
         },
       })
       .fromTo(

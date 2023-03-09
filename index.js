@@ -463,3 +463,9 @@ window.addEventListener("load", () => {
 window.addEventListener("resize", () => {
   viewport.setDevice();
 });
+
+window.addEventListener("scroll", () => {
+  setTimeout(() => {
+    alert("스크롤 됨");
+  }, 1000);
+});
