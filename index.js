@@ -264,6 +264,8 @@ class InteractionOnMobile {
     });
 
     if (window.scrollY > 10) {
+      document.querySelector(".mobile-hero-mockup__wrapper").style =
+        "opacity: 0; background-color: red";
       mockupAnimation01.paused(true);
       mockupAnimation02.paused(true);
       headingAnimation.paused(true);
