@@ -228,16 +228,16 @@ class InteractionOnMobile {
   render() {
     alert(window.pageYOffset);
 
-    if (window.pageYOffset > 200) {
-      document.querySelector(".mobile-hero-mockup__wrapper").style =
-        "opacity: 0; background-color: red";
-    }
-
-    this.setInitAnimation();
     this.setMockupCardsAnimation();
     this.setHeadingAnimation();
     this.setHeroScrollCardsAnimation();
     this.setParagraphAnimation();
+
+    if (window.pageYOffset > 200) {
+      document.querySelector(".mobile-hero-mockup__wrapper").style =
+        "opacity: 0; background-color: red";
+      this.setInitAnimation();
+    }
   }
 
   setInitAnimation() {
@@ -312,7 +312,7 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
-          // markers: true,
+          markers: true,
         },
       })
       .fromTo(
