@@ -226,8 +226,9 @@ class InteractionOnPc {
 
 class InteractionOnMobile {
   render() {
-    if (window.pageYOffset > 50) {
-      alert(window.pageYOffset);
+    alert(window.pageYOffset);
+
+    if (window.pageYOffset > 200) {
       document.querySelector(".mobile-hero-mockup__wrapper").style =
         "opacity: 0; background-color: red";
     }
@@ -311,7 +312,7 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
-          markers: true,
+          // markers: true,
         },
       })
       .fromTo(
