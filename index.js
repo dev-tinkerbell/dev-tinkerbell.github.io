@@ -263,7 +263,7 @@ class InteractionOnMobile {
       duration: 1,
     });
 
-    if (window.scrollY > 10) {
+    if (window.scrollY > 50) {
       document.querySelector(".mobile-hero-mockup__wrapper").style =
         "opacity: 0; background-color: red";
       mockupAnimation01.paused(true);
@@ -307,7 +307,7 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
-          markers: true,
+          // markers: true,
         },
       })
       .fromTo(
