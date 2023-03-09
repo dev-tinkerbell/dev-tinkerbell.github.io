@@ -226,18 +226,13 @@ class InteractionOnPc {
 
 class InteractionOnMobile {
   render() {
-    alert(window.pageYOffset);
-
+    if (window.pageYOffset > 100) {
+      this.setInitAnimation();
+    }
     this.setMockupCardsAnimation();
     this.setHeadingAnimation();
     this.setHeroScrollCardsAnimation();
     this.setParagraphAnimation();
-
-    if (window.pageYOffset > 200) {
-      document.querySelector(".mobile-hero-mockup__wrapper").style =
-        "opacity: 0; background-color: red";
-      this.setInitAnimation();
-    }
   }
 
   setInitAnimation() {
@@ -269,12 +264,6 @@ class InteractionOnMobile {
       y: "-30px",
       duration: 1,
     });
-
-    if (window.scrollY > 50) {
-      mockupAnimation01.paused(true);
-      mockupAnimation02.paused(true);
-      headingAnimation.paused(true);
-    }
   }
 
   setMockupCardsAnimation() {
@@ -312,7 +301,7 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
-          markers: true,
+          // markers: true,
         },
       })
       .fromTo(
