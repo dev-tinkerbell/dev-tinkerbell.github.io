@@ -231,10 +231,12 @@ class InteractionOnMobile {
     this.setHeroScrollCardsAnimation();
     this.setParagraphAnimation();
 
-    if (window.pageYOffset < 100) {
-      alert(window.pageYOffset);
-      this.setInitAnimation();
-    }
+    setTimeout(() => {
+      if (window.pageYOffset < 100) {
+        alert(window.pageYOffset);
+        this.setInitAnimation();
+      }
+    }, 0);
   }
 
   setInitAnimation() {
