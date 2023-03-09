@@ -226,6 +226,12 @@ class InteractionOnPc {
 
 class InteractionOnMobile {
   render() {
+    if (window.scrollY > 50) {
+      alert(window.scrollY);
+      document.querySelector(".mobile-hero-mockup__wrapper").style =
+        "opacity: 0; background-color: red";
+    }
+
     this.setInitAnimation();
     this.setMockupCardsAnimation();
     this.setHeadingAnimation();
@@ -264,8 +270,6 @@ class InteractionOnMobile {
     });
 
     if (window.scrollY > 50) {
-      document.querySelector(".mobile-hero-mockup__wrapper").style =
-        "opacity: 0; background-color: red";
       mockupAnimation01.paused(true);
       mockupAnimation02.paused(true);
       headingAnimation.paused(true);
