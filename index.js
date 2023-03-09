@@ -243,6 +243,9 @@ class InteractionOnMobile {
         autoAlpha: 1,
         scale: 1,
         duration: 1.5,
+        onComplete: () => {
+          alert("complete");
+        },
       }
     );
 
@@ -443,24 +446,17 @@ window.addEventListener("load", () => {
   interactionLottie.playLottie(interactionLottie.lottieListElements.PC);
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const a = new InteractionOnMobile();
+  a.render();
+
+  if (window.scrollY < 200) {
+    a.setInitAnimation();
+  }
+});
+
 window.addEventListener("resize", () => {
   viewport.setDevice();
 });
 
-window.addEventListener("scroll", () => {
-  const a = new InteractionOnMobile();
-  a.render();
-  setTimeout(() => {
-    alert(window.scrollY);
-    alert(window.pageYOffset);
-  }, 3000);
-
-  if (window.scrollY < 200) {
-    alert("test");
-    alert(window.scrollY);
-    alert(window.pageYOffset);
-    a.setInitAnimation();
-  } else {
-    alert("200 over");
-  }
-});
+window.addEventListener("scroll", () => {});
