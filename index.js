@@ -224,15 +224,13 @@ class InteractionOnPc {
   }
 }
 
-let isActiveInitAnimation = true;
 class InteractionOnMobile {
   render() {
+    this.setInitAnimation();
     this.setMockupCardsAnimation();
     this.setHeadingAnimation();
     this.setHeroScrollCardsAnimation();
     this.setParagraphAnimation();
-
-    if (isActiveInitAnimation) this.setInitAnimation();
   }
 
   setInitAnimation() {
@@ -277,7 +275,7 @@ class InteractionOnMobile {
         mockupAnimation02.paused(false);
         headingAnimation.paused(false);
       }
-    }, 100);
+    }, 0);
   }
 
   setMockupCardsAnimation() {
@@ -315,7 +313,7 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
-          markers: true,
+          //   markers: true,
         },
       })
       .fromTo(
@@ -462,10 +460,4 @@ window.addEventListener("load", () => {
 
 window.addEventListener("resize", () => {
   viewport.setDevice();
-});
-
-window.addEventListener("scroll", () => {
-  setTimeout(() => {
-    alert("스크롤 됨");
-  }, 1000);
 });
