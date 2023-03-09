@@ -227,6 +227,7 @@ class InteractionOnPc {
 class InteractionOnMobile {
   render() {
     if (window.pageYOffset < 100) {
+      alert(window.pageYOffset);
       this.setInitAnimation();
     }
     this.setMockupCardsAnimation();
