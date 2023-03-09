@@ -449,9 +449,9 @@ window.addEventListener("load", () => {
 document.addEventListener("DOMContentLoaded", function () {
   const a = new InteractionOnMobile();
   a.render();
-  alert("1 : ", window.scrollY);
+  alert(`1 : ${window.scrollY}`);
   setTimeout(() => {
-    alert("2 : ", window.scrollY);
+    alert(`2 : ${window.scrollY}`);
   }, 3000);
 
   if (window.scrollY < 200) {
