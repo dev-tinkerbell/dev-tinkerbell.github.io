@@ -225,14 +225,20 @@ class InteractionOnPc {
 }
 
 class InteractionOnMobile {
+  constructor() {
+    this.setInitAnimation();
+  }
+
   render() {
-    this.setMockupCardsAnimation();
+    //this.setMockupCardsAnimation();
     this.setHeadingAnimation();
     this.setHeroScrollCardsAnimation();
     this.setParagraphAnimation();
   }
 
   setInitAnimation() {
+    const _this = this;
+
     gsap.fromTo(
       ".mobile-hero-mockup__wrapper",
       {
@@ -244,7 +250,7 @@ class InteractionOnMobile {
         scale: 1,
         duration: 1.5,
         onComplete: () => {
-          alert("complete");
+          _this.setMockupCardsAnimation();
         },
       }
     );
@@ -293,8 +299,13 @@ class InteractionOnMobile {
       }
     }
 
-    gsap
-      .timeline({
+    gsap.fromTo(
+      ".mobile-hero-mockup__wrapper img[data-position]",
+      {
+        x: (i, el) => `${el.getAttribute("data-position")}px`,
+      },
+      {
+        x: "0px",
         scrollTrigger: {
           trigger: ".is--mobile .hero-scroll__wrapper-container",
           start: `${getPosition(start)}px top`,
@@ -303,16 +314,8 @@ class InteractionOnMobile {
           scrub: 1,
           // markers: true,
         },
-      })
-      .fromTo(
-        ".mobile-hero-mockup__wrapper img[data-position]",
-        {
-          x: (i, el) => `${el.getAttribute("data-position")}px`,
-        },
-        {
-          x: "0px",
-        }
-      );
+      }
+    );
 
     gsap.fromTo(
       ".mobile-hero-mockup__wrapper",
@@ -329,12 +332,6 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
-          onEnter: () => {
-            alert("onenter");
-          },
-          onLeave: () => {
-            alert("onleave");
-          },
           // markers: true,
         },
       }
@@ -458,7 +455,7 @@ window.onload = function () {
   const a = new InteractionOnMobile();
 
   if (window.scrollY < 200) {
-    a.setInitAnimation();
+    //a.setInitAnimation();
   }
   setTimeout(() => {
     a.render();
