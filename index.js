@@ -441,19 +441,26 @@ window.addEventListener("load", () => {
   const interactionLottie = new InteractionLottie();
   interactionLottie.playLottie(interactionLottie.lottieListElements.MOBILE);
   interactionLottie.playLottie(interactionLottie.lottieListElements.PC);
-  const a = new InteractionOnMobile();
-  a.render();
-  setTimeout(() => {
-    if (window.scrollY < 200) {
-      alert("test");
-      alert(window.scrollY);
-      a.setInitAnimation();
-    } else {
-      alert("200 over");
-    }
-  }, 3000);
 });
 
 window.addEventListener("resize", () => {
   viewport.setDevice();
+});
+
+window.addEventListener("scroll", () => {
+  const a = new InteractionOnMobile();
+  a.render();
+  setTimeout(() => {
+    alert(window.scrollY);
+    alert(window.pageYOffset);
+  }, 3000);
+
+  if (window.scrollY < 200) {
+    alert("test");
+    alert(window.scrollY);
+    alert(window.pageYOffset);
+    a.setInitAnimation();
+  } else {
+    alert("200 over");
+  }
 });
