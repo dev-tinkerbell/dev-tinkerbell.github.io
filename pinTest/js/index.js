@@ -92,7 +92,7 @@ class InteractionLottie {
 
 class InteractionOnPc {
   render() {
-    this.setInitAnimation();
+    // this.setInitAnimation();
     this.setHeadeingParagraphAnimation();
     this.setHeroScrollCardsAnimation();
     this.setMockupCardsAnimation();
@@ -100,7 +100,7 @@ class InteractionOnPc {
 
   setInitAnimation() {
     gsap.fromTo(
-      ".hero-background__heading",
+      ".is--pc .hero-background__heading",
       {
         scale: 0.9,
       },
@@ -115,11 +115,19 @@ class InteractionOnPc {
     gsap
       .timeline({
         scrollTrigger: {
-          trigger: ".is--pc .hero-scroll__wrapper-container",
+          trigger: ".new-hero__section.is--pc",
           start: "top top",
-          end: "bottom -40%",
+          end: "bottom bottom",
           toggleActions,
           scrub: 1.5,
+          pin: true,
+          pinSpacing: false,
+
+          onEnter: () => {
+            document
+              .querySelector(".is--pc .hero-background__heading")
+              .classList.add("active");
+          },
         },
       })
       .to(".hero-background__heading", {
@@ -162,7 +170,8 @@ class InteractionOnPc {
         scrollTrigger: {
           trigger: ".is--pc .hero-scroll__wrapper-container",
           start: "50% top",
-          end: "200% center",
+
+          end: "250% bottom",
           toggleActions,
           scrub: 1.5,
         },
@@ -174,9 +183,9 @@ class InteractionOnPc {
           rotate: "45deg",
         },
         {
-          autoAlpha: 1,
           scale: 4.5,
           rotate: "225deg",
+          duration: 5,
           ease: "none",
         }
       );
@@ -307,7 +316,6 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
-          //   markers: true,
         },
       })
       .fromTo(
