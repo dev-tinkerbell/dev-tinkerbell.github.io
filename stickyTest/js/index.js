@@ -92,7 +92,7 @@ class InteractionLottie {
 
 class InteractionOnPc {
   render() {
-    // this.setInitAnimation();
+    this.setInitAnimation();
     this.setHeadeingParagraphAnimation();
     this.setHeroScrollCardsAnimation();
     this.setMockupCardsAnimation();
@@ -100,7 +100,7 @@ class InteractionOnPc {
 
   setInitAnimation() {
     gsap.fromTo(
-      ".is--pc .hero-background__heading",
+      ".hero-background__heading",
       {
         scale: 0.9,
       },
@@ -115,21 +115,11 @@ class InteractionOnPc {
     gsap
       .timeline({
         scrollTrigger: {
-          trigger: ".new-hero__section.is--pc",
+          trigger: ".is--pc .hero-scroll__wrapper-container",
           start: "top top",
-          end: "bottom bottom",
+          end: "bottom -40%",
           toggleActions,
           scrub: 1.5,
-          pin: true,
-          pinSpacing: false,
-          markers: true,
-
-          onEnter: () => {
-            console.log("enter");
-            document
-              .querySelector(".is--pc .hero-background__heading")
-              .classList.add("active");
-          },
         },
       })
       .to(".hero-background__heading", {
@@ -172,8 +162,7 @@ class InteractionOnPc {
         scrollTrigger: {
           trigger: ".is--pc .hero-scroll__wrapper-container",
           start: "50% top",
-
-          end: "250% bottom",
+          end: "200% center",
           toggleActions,
           scrub: 1.5,
         },
@@ -185,9 +174,9 @@ class InteractionOnPc {
           rotate: "45deg",
         },
         {
+          autoAlpha: 1,
           scale: 4.5,
           rotate: "225deg",
-          duration: 5,
           ease: "none",
         }
       );
@@ -231,11 +220,12 @@ class InteractionOnPc {
 
 class InteractionOnMobile {
   render() {
-    this.setInitAnimation();
     this.setMockupCardsAnimation();
     this.setHeadingAnimation();
     this.setHeroScrollCardsAnimation();
     this.setParagraphAnimation();
+
+    // this.setInitAnimation();
   }
 
   setInitAnimation() {
@@ -318,6 +308,7 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
+          markers: true,
         },
       })
       .fromTo(
@@ -341,10 +332,31 @@ class InteractionOnMobile {
         scale: 0.5,
         scrollTrigger: {
           trigger: ".is--mobile .hero-scroll__wrapper-container",
-          start: `${getPosition(start)}px top`,
+          start: `${getPosition(start) - 1}px top`,
           end: `${getPosition(end)}px center`,
+          // start: `${getPosition(start)}px top`,
+          // end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
+
+          onEnter: () => {
+            console.log("enter");
+            if (window.scrollY < 10) {
+              document
+                .querySelector(".is--mobile .mobile-hero-mockup__wrapper")
+                .classList.add("mobile-active");
+              console.log(window.scrollY);
+            }
+          },
+          onEnterBack: () => {
+            console.log("onEnterBack");
+          },
+          onLeave: () => {
+            console.log("leave");
+            document
+              .querySelector(".is--mobile .mobile-hero-mockup__wrapper")
+              .classList.remove("mobile-active");
+          },
         },
       }
     );
