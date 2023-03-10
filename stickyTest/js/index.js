@@ -349,13 +349,13 @@ class InteractionOnMobile {
             }
           },
           onEnterBack: () => {
-            console.log("onEnterBack");
+            alert("onEnterBack");
           },
           onLeave: () => {
             console.log("leave");
-            document
-              .querySelector(".is--mobile .mobile-hero-mockup__wrapper")
-              .classList.remove("mobile-active");
+            // document
+            //   .querySelector(".is--mobile .mobile-hero-mockup__wrapper")
+            //   .classList.remove("mobile-active");
           },
         },
       }
