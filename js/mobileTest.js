@@ -53,7 +53,6 @@ class InteractionLottie {
         start: "top center",
         end: "70% bottom",
         scrub: 2,
-        // markers: true,
       };
       let context = gsap.context && gsap.context();
       let animation = lottie.loadAnimation({
@@ -121,7 +120,6 @@ class InteractionOnPc {
           end: "bottom -40%",
           toggleActions,
           scrub: 1.5,
-          // markers: true,
         },
       })
       .to(".hero-background__heading", {
@@ -167,7 +165,6 @@ class InteractionOnPc {
           end: "200% center",
           toggleActions,
           scrub: 1.5,
-          // markers: true,
         },
       })
       .fromTo(
@@ -191,7 +188,6 @@ class InteractionOnPc {
         end: "bottom center",
         toggleActions,
         scrub: 1.5,
-        // markers: true,
       },
       autoAlpha: 0,
     });
@@ -205,7 +201,6 @@ class InteractionOnPc {
         end: "bottom center",
         toggleActions,
         scrub: 1.5,
-        // markers: true,
       },
       scale: 1.2,
     });
@@ -216,7 +211,6 @@ class InteractionOnPc {
         start: "top bottom",
         end: "bottom 10%",
         scrub: 1.5,
-        // markers: true,
       },
       x: (i, el) => el.getAttribute("data-position"),
       ease: "none",
@@ -275,7 +269,7 @@ class InteractionOnMobile {
         mockupAnimation02.paused(false);
         headingAnimation.paused(false);
       }
-    }, 100);
+    }, 50);
   }
 
   setMockupCardsAnimation() {
@@ -341,7 +335,6 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
-          // markers: true,
         },
       }
     );
@@ -361,7 +354,6 @@ class InteractionOnMobile {
           end: "20% center",
           toggleActions,
           scrub: 0.8,
-          // markers: true,
         },
         autoAlpha: 0,
         scale: 0.5,
@@ -378,7 +370,6 @@ class InteractionOnMobile {
           end: "bottom bottom",
           toggleActions,
           scrub: 1,
-          // markers: true,
         },
       })
       .fromTo(
@@ -402,7 +393,6 @@ class InteractionOnMobile {
         end: "35% center",
         toggleActions,
         scrub: 1,
-        // markers: true,
       },
       autoAlpha: 0,
     });
@@ -417,7 +407,6 @@ class InteractionOnMobile {
           end: "bottom bottom",
           toggleActions,
           scrub: 1,
-          // markers: true,
         },
       })
       .fromTo(
