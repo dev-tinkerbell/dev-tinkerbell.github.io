@@ -340,7 +340,7 @@ class InteractionOnMobile {
           scrub: 1,
 
           onEnter: () => {
-            console.log("enter");
+            // console.log("enter");
             if (window.scrollY < 10) {
               document
                 .querySelector(".is--mobile .mobile-hero-mockup__wrapper")
@@ -349,10 +349,10 @@ class InteractionOnMobile {
             }
           },
           onEnterBack: () => {
-            alert("onEnterBack");
+            // alert("onEnterBack");
           },
           onLeave: () => {
-            console.log("leave");
+            // console.log("leave");
             // document
             //   .querySelector(".is--mobile .mobile-hero-mockup__wrapper")
             //   .classList.remove("mobile-active");
