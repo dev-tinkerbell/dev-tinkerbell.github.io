@@ -321,6 +321,9 @@ class InteractionOnMobile {
         }
       );
 
+    let isEnterBack = false;
+    let isEnter = false;
+
     gsap.fromTo(
       ".mobile-hero-mockup__wrapper",
       {
@@ -334,28 +337,17 @@ class InteractionOnMobile {
           trigger: ".is--mobile .hero-scroll__wrapper-container",
           start: `${getPosition(start) - 1}px top`,
           end: `${getPosition(end)}px center`,
-          // start: `${getPosition(start)}px top`,
-          // end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
 
-          onEnter: () => {
-            // console.log("enter");
-            if (window.scrollY < 10) {
+          onEnter: () => (isEnter = true),
+          onEnterBack: () => (isEnterBack = true),
+          onUpdate: (self) => {
+            if (self.progress < 0.05 && !isEnterBack && !isEnter) {
               document
                 .querySelector(".is--mobile .mobile-hero-mockup__wrapper")
                 .classList.add("mobile-active");
-              console.log(window.scrollY);
             }
-          },
-          onEnterBack: () => {
-            // alert("onEnterBack");
-          },
-          onLeave: () => {
-            // console.log("leave");
-            // document
-            //   .querySelector(".is--mobile .mobile-hero-mockup__wrapper")
-            //   .classList.remove("mobile-active");
           },
         },
       }
