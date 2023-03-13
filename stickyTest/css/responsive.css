@@ -4946,6 +4946,60 @@
     height: 200px;
   }
 
+  .mobile-active .mobile-hero__mockup {
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+  }
+
+  .mobile-active .is--1 {
+    animation-name: moveMockup01;
+  }
+
+  .mobile-active .is--3 {
+    animation-name: moveMockup03;
+  }
+
+  .mobile-active .is--4 {
+    animation-name: moveMockup04;
+  }
+
+  .mobile-active .is--5 {
+    animation-name: moveMockup05;
+  }
+
+  @keyframes moveMockup01 {
+    from {
+      transform: translateX(0px);
+    }
+    to {
+      transform: translateX(50px);
+    }
+  }
+  @keyframes moveMockup03 {
+    from {
+      transform: translateX(0px);
+    }
+    to {
+      transform: translateX(-40px);
+    }
+  }
+  @keyframes moveMockup04 {
+    from {
+      transform: translateX(0px);
+    }
+    to {
+      transform: translateX(-60px);
+    }
+  }
+  @keyframes moveMockup05 {
+    from {
+      transform: translateX(0px);
+    }
+    to {
+      transform: translateX(-80px);
+    }
+  }
+
   .target-icon__wrapper.is--1920px-and-up {
     display: none;
   }

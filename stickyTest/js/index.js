@@ -300,30 +300,10 @@ class InteractionOnMobile {
       }
     }
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".is--mobile .hero-scroll__wrapper-container",
-          start: `${getPosition(start)}px top`,
-          end: `${getPosition(end)}px center`,
-          toggleActions,
-          scrub: 1,
-          markers: true,
-        },
-      })
-      .fromTo(
-        ".mobile-hero-mockup__wrapper img[data-position]",
-        {
-          x: (i, el) => `${el.getAttribute("data-position")}px`,
-        },
-        {
-          x: "0px",
-        }
-      );
-
     let isEnterBack = false;
     let isEnter = false;
 
+    // scale, opacity animation
     gsap.fromTo(
       ".mobile-hero-mockup__wrapper",
       {
@@ -352,6 +332,27 @@ class InteractionOnMobile {
         },
       }
     );
+
+    // tanslateX animation
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: ".is--mobile .hero-scroll__wrapper-container",
+          start: `${getPosition(start)}px top`,
+          end: `${getPosition(end)}px center`,
+          toggleActions,
+          scrub: 1,
+        },
+      })
+      .fromTo(
+        ".mobile-hero-mockup__wrapper img[data-position]",
+        {
+          x: (i, el) => `${el.getAttribute("data-position")}px`,
+        },
+        {
+          x: "0px",
+        }
+      );
   }
 
   setHeadingAnimation() {
