@@ -55,6 +55,7 @@ class InteractionLottie {
         scrub: 2,
         onEnter: () => {
           alert("lottie enter");
+          alert(window.scrollY);
         },
       };
       let context = gsap.context && gsap.context();
