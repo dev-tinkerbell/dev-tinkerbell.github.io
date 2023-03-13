@@ -53,6 +53,9 @@ class InteractionLottie {
         start: "top center",
         end: "70% bottom",
         scrub: 2,
+        onEnter: () => {
+          alert("lottie enter");
+        },
       };
       let context = gsap.context && gsap.context();
       let animation = lottie.loadAnimation({
@@ -220,34 +223,28 @@ class InteractionOnPc {
 
 class InteractionOnMobile {
   render() {
+    this.setInitAnimation();
     this.setMockupCardsAnimation();
     this.setHeadingAnimation();
     this.setHeroScrollCardsAnimation();
     this.setParagraphAnimation();
-
-    this.setInitAnimation();
   }
 
   setInitAnimation() {
-    const mockupAnimation01 = gsap.fromTo(
-      ".mobile-hero-mockup__wrapper",
-      {
-        autoAlpha: 0,
-        scale: 0.5,
-      },
-      {
-        autoAlpha: 1,
-        scale: 1,
-        duration: 1.5,
-        onStart: () => {
-          if (window.scrollY > 10) {
-            mockupAnimation01.paused(true);
-            alert(window.scrollY);
-          }
+    const mockupAnimation01 = gsap
+      .fromTo(
+        ".mobile-hero-mockup__wrapper",
+        {
+          autoAlpha: 0,
+          scale: 0.5,
         },
-      }
-    );
-    // .paused(true);
+        {
+          autoAlpha: 1,
+          scale: 1,
+          duration: 1.5,
+        }
+      )
+      .paused(true);
 
     const mockupAnimation02 = gsap
       .fromTo(
@@ -269,11 +266,11 @@ class InteractionOnMobile {
       })
       .paused(true);
 
-    // mockupAnimation01.paused(false);
-    // mockupAnimation02.paused(false);
-    // headingAnimation.paused(false);
     setTimeout(() => {
       if (window.scrollY < 10) {
+        mockupAnimation01.paused(false);
+        mockupAnimation02.paused(false);
+        headingAnimation.paused(false);
       }
     }, 50);
   }
