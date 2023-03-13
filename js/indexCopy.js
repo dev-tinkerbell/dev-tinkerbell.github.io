@@ -220,24 +220,60 @@ class InteractionOnPc {
 
 class InteractionOnMobile {
   render() {
-    this.setInitAnimation();
     this.setMockupCardsAnimation();
     this.setHeadingAnimation();
     this.setHeroScrollCardsAnimation();
     this.setParagraphAnimation();
+
+    this.setInitAnimation();
   }
 
   setInitAnimation() {
-    gsap.fromTo(
-      ".mobile-hero-mockup__wrapper img[data-position]",
-      {
-        x: 0,
-      },
-      {
-        x: (i, el) => `${el.getAttribute("data-position")}px`,
-        duration: 1.5,
+    const mockupAnimation01 = gsap
+      .fromTo(
+        ".mobile-hero-mockup__wrapper",
+        {
+          autoAlpha: 0,
+          scale: 0.5,
+        },
+        {
+          autoAlpha: 1,
+          scale: 1,
+          duration: 1.5,
+        }
+      )
+      .paused(true);
+
+    const mockupAnimation02 = gsap
+      .fromTo(
+        ".mobile-hero-mockup__wrapper img[data-position]",
+        {
+          x: 0,
+        },
+        {
+          x: (i, el) => `${el.getAttribute("data-position")}px`,
+          duration: 1.5,
+        }
+      )
+      .paused(true);
+
+    const headingAnimation = gsap
+      .to(".hero-background__heading.is--mobile", {
+        y: "-30px",
+        duration: 1,
+      })
+      .paused(true);
+
+    setTimeout(() => {
+      if (window.scrollY < 10) {
+        mockupAnimation01.paused(false);
+        mockupAnimation02.paused(false);
+        headingAnimation.paused(false);
       }
-    );
+    }, 50);
+
+    alert("setInitAnimation");
+    alert(window.scrollY);
   }
 
   setMockupCardsAnimation() {
@@ -267,40 +303,6 @@ class InteractionOnMobile {
       }
     }
 
-    let isEnterBack = false;
-    let isEnter = false;
-
-    // scale, opacity animation
-    gsap.fromTo(
-      ".mobile-hero-mockup__wrapper",
-      {
-        autoAlpha: 1,
-        scale: 1,
-      },
-      {
-        autoAlpha: 0,
-        scale: 0.5,
-        scrollTrigger: {
-          trigger: ".is--mobile .hero-scroll__wrapper-container",
-          start: `${getPosition(start) - 1}px top`,
-          end: `${getPosition(end)}px center`,
-          toggleActions,
-          scrub: 1,
-
-          onEnter: () => (isEnter = true),
-          onEnterBack: () => (isEnterBack = true),
-          onUpdate: (self) => {
-            if (self.progress < 0.05 && !isEnterBack && !isEnter) {
-              document
-                .querySelector(".mobile-hero__section.is--mobile")
-                .classList.add("mobile-active");
-            }
-          },
-        },
-      }
-    );
-
-    // tanslateX animation
     gsap
       .timeline({
         scrollTrigger: {
@@ -309,6 +311,7 @@ class InteractionOnMobile {
           end: `${getPosition(end)}px center`,
           toggleActions,
           scrub: 1,
+          //   markers: true,
         },
       })
       .fromTo(
@@ -320,6 +323,28 @@ class InteractionOnMobile {
           x: "0px",
         }
       );
+
+    gsap.fromTo(
+      ".mobile-hero-mockup__wrapper",
+      {
+        autoAlpha: 1,
+        scale: 1,
+      },
+      {
+        autoAlpha: 0,
+        scale: 0.5,
+        scrollTrigger: {
+          trigger: ".is--mobile .hero-scroll__wrapper-container",
+          start: `${getPosition(start)}px top`,
+          end: `${getPosition(end)}px center`,
+          toggleActions,
+          scrub: 1,
+        },
+      }
+    );
+
+    alert("setMockupCardsAnimation");
+    alert(window.scrollY);
   }
 
   setHeadingAnimation() {
