@@ -229,20 +229,25 @@ class InteractionOnMobile {
   }
 
   setInitAnimation() {
-    const mockupAnimation01 = gsap
-      .fromTo(
-        ".mobile-hero-mockup__wrapper",
-        {
-          autoAlpha: 0,
-          scale: 0.5,
+    const mockupAnimation01 = gsap.fromTo(
+      ".mobile-hero-mockup__wrapper",
+      {
+        autoAlpha: 0,
+        scale: 0.5,
+      },
+      {
+        autoAlpha: 1,
+        scale: 1,
+        duration: 1.5,
+        onStart: () => {
+          if (window.scrollY > 10) {
+            mockupAnimation01.paused(true);
+            console.log(window.scrollY);
+          }
         },
-        {
-          autoAlpha: 1,
-          scale: 1,
-          duration: 1.5,
-        }
-      )
-      .paused(true);
+      }
+    );
+    // .paused(true);
 
     const mockupAnimation02 = gsap
       .fromTo(
@@ -264,16 +269,13 @@ class InteractionOnMobile {
       })
       .paused(true);
 
+    // mockupAnimation01.paused(false);
+    // mockupAnimation02.paused(false);
+    // headingAnimation.paused(false);
     setTimeout(() => {
       if (window.scrollY < 10) {
-        mockupAnimation01.paused(false);
-        mockupAnimation02.paused(false);
-        headingAnimation.paused(false);
       }
     }, 50);
-
-    alert("setInitAnimation");
-    alert(window.scrollY);
   }
 
   setMockupCardsAnimation() {
@@ -342,9 +344,6 @@ class InteractionOnMobile {
         },
       }
     );
-
-    alert("setMockupCardsAnimation");
-    alert(window.scrollY);
   }
 
   setHeadingAnimation() {
