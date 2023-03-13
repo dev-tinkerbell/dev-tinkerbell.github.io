@@ -4713,6 +4713,19 @@
     height: 90px;
   }
 
+  .mobile-active .hero-background__heading {
+    animation: headingMoveAnimation forwards 1s;
+  }
+
+  @keyframes headingMoveAnimation {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-30px);
+    }
+  }
+
   .hero-scroll__paragraph.is--1 {
     width: 300px;
     font-size: 32px;
@@ -4894,9 +4907,13 @@
     -ms-flex-align: end;
     align-items: flex-end;
     opacity: 0;
+
+    /* transition: all 1s;
+    transition-timing-function: linear;
+    transform: translate3d(0px, 0px, 0px) scale(0.5); */
   }
 
-  .mobile-active {
+  .mobile-active .mobile-hero-mockup__wrapper {
     animation: fadeIn 1.5s;
   }
 
@@ -4944,60 +4961,6 @@
     z-index: 1;
     width: auto;
     height: 200px;
-  }
-
-  .mobile-active .mobile-hero__mockup {
-    animation-duration: 1.5s;
-    animation-fill-mode: forwards;
-  }
-
-  .mobile-active .is--1 {
-    animation-name: moveMockup01;
-  }
-
-  .mobile-active .is--3 {
-    animation-name: moveMockup03;
-  }
-
-  .mobile-active .is--4 {
-    animation-name: moveMockup04;
-  }
-
-  .mobile-active .is--5 {
-    animation-name: moveMockup05;
-  }
-
-  @keyframes moveMockup01 {
-    from {
-      transform: translateX(0px);
-    }
-    to {
-      transform: translateX(50px);
-    }
-  }
-  @keyframes moveMockup03 {
-    from {
-      transform: translateX(0px);
-    }
-    to {
-      transform: translateX(-40px);
-    }
-  }
-  @keyframes moveMockup04 {
-    from {
-      transform: translateX(0px);
-    }
-    to {
-      transform: translateX(-60px);
-    }
-  }
-  @keyframes moveMockup05 {
-    from {
-      transform: translateX(0px);
-    }
-    to {
-      transform: translateX(-80px);
-    }
   }
 
   .target-icon__wrapper.is--1920px-and-up {

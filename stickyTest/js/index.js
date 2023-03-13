@@ -225,52 +225,20 @@ class InteractionOnMobile {
     this.setHeroScrollCardsAnimation();
     this.setParagraphAnimation();
 
-    // this.setInitAnimation();
+    this.setInitAnimation();
   }
 
   setInitAnimation() {
-    const mockupAnimation01 = gsap
-      .fromTo(
-        ".mobile-hero-mockup__wrapper",
-        {
-          autoAlpha: 0,
-          scale: 0.5,
-        },
-        {
-          autoAlpha: 1,
-          scale: 1,
-          duration: 1.5,
-        }
-      )
-      .paused(true);
-
-    const mockupAnimation02 = gsap
-      .fromTo(
-        ".mobile-hero-mockup__wrapper img[data-position]",
-        {
-          x: 0,
-        },
-        {
-          x: (i, el) => `${el.getAttribute("data-position")}px`,
-          duration: 1.5,
-        }
-      )
-      .paused(true);
-
-    const headingAnimation = gsap
-      .to(".hero-background__heading.is--mobile", {
-        y: "-30px",
-        duration: 1,
-      })
-      .paused(true);
-
-    setTimeout(() => {
-      if (window.scrollY < 10) {
-        mockupAnimation01.paused(false);
-        mockupAnimation02.paused(false);
-        headingAnimation.paused(false);
+    gsap.fromTo(
+      ".mobile-hero-mockup__wrapper img[data-position]",
+      {
+        x: 0,
+      },
+      {
+        x: (i, el) => `${el.getAttribute("data-position")}px`,
+        duration: 1.5,
       }
-    }, 50);
+    );
   }
 
   setMockupCardsAnimation() {
@@ -323,9 +291,10 @@ class InteractionOnMobile {
           onEnter: () => (isEnter = true),
           onEnterBack: () => (isEnterBack = true),
           onUpdate: (self) => {
+            console.log("update");
             if (self.progress < 0.05 && !isEnterBack && !isEnter) {
               document
-                .querySelector(".is--mobile .mobile-hero-mockup__wrapper")
+                .querySelector(".mobile-hero__section.is--mobile")
                 .classList.add("mobile-active");
             }
           },
