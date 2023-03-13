@@ -242,7 +242,7 @@ class InteractionOnMobile {
         onStart: () => {
           if (window.scrollY > 10) {
             mockupAnimation01.paused(true);
-            console.log(window.scrollY);
+            alert(window.scrollY);
           }
         },
       }
