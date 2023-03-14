@@ -4,6 +4,9 @@ class Viewport {
     this.mobile = "MOBILE";
     this.currentDevice = null;
     this.previouseViewport = null;
+
+    this.interactionOnPc = new InteractionOnPc();
+    this.interactionOnMobile = new InteractionOnMobile();
   }
 
   setDevice() {
@@ -22,10 +25,20 @@ class Viewport {
   excuteScript() {
     if (this.currentDevice === this.previouseViewport) return;
 
-    if (this.currentDevice === this.pc) {
-      return new InteractionOnPc().render();
-    }
-    new InteractionOnMobile().render();
+    // scrollTrigger reset
+    let allTriggers = ScrollTrigger.getAll();
+    const disableTriggers = () => {
+      allTriggers.forEach((trigger) => {
+        console.log(trigger);
+        trigger.disable();
+      });
+    };
+
+    disableTriggers();
+
+    if (this.currentDevice === this.pc) return this.interactionOnPc.render();
+
+    this.interactionOnMobile.render();
   }
 }
 
@@ -100,7 +113,7 @@ class InteractionOnPc {
 
   setInitAnimation() {
     gsap.fromTo(
-      ".hero-background__heading",
+      ".is--pc .hero-background__heading",
       {
         scale: 0.9,
       },
@@ -122,7 +135,7 @@ class InteractionOnPc {
           scrub: 1.5,
         },
       })
-      .to(".hero-background__heading", {
+      .to(".is--pc .hero-background__heading", {
         scale: 0.7,
         autoAlpha: 0,
         duration: 2,
@@ -168,7 +181,7 @@ class InteractionOnPc {
         },
       })
       .fromTo(
-        ".hero-scroll__wrapper",
+        ".is--pc .hero-scroll__wrapper",
         {
           scale: 0.5,
           rotate: "45deg",
@@ -181,7 +194,7 @@ class InteractionOnPc {
         }
       );
 
-    gsap.to(".dim", {
+    gsap.to(".is--pc .dim", {
       scrollTrigger: {
         trigger: ".is--pc .hero-scroll__wrapper-container",
         start: "50% top",
@@ -440,8 +453,7 @@ gsap.registerPlugin(ScrollTrigger);
 const viewport = new Viewport();
 
 window.addEventListener("load", () => {
-  console.log("viewport");
-  const device = viewport.setDevice();
+  viewport.setDevice();
 
   const interactionLottie = new InteractionLottie();
   interactionLottie.playLottie(interactionLottie.lottieListElements.MOBILE);
