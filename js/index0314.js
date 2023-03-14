@@ -26,15 +26,7 @@ class Viewport {
     if (this.currentDevice === this.previouseViewport) return;
 
     // scrollTrigger reset
-    let allTriggers = ScrollTrigger.getAll();
-    const disableTriggers = () => {
-      allTriggers.forEach((trigger) => {
-        console.log(trigger);
-        trigger.disable();
-      });
-    };
-
-    disableTriggers();
+    ScrollTrigger.killAll();
 
     if (this.currentDevice === this.pc) return this.interactionOnPc.render();
 
